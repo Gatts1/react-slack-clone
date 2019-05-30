@@ -9,10 +9,13 @@ import Header from "./header-channel";
 
 const $root = document.getElementById("root");
 
+<<<<<<< HEAD
 =======
 import Header from "./header-channel";
 
 const $root = document.getElementById("root");
 
+>>>>>>> Add component
+=======
 >>>>>>> Add component
 render(<Header />, $root);

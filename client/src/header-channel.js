@@ -1,8 +1,5 @@
 /** @jsx jsx */
-<<<<<<< HEAD
 
-=======
->>>>>>> Add emotion and css in div general
 import React from "react";
 import { jsx } from "@emotion/core";
 
