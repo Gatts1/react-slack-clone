@@ -1,8 +1,21 @@
+/** @jsx jsx */
 import React from "react";
+import { jsx } from "@emotion/core";
 
-function HeaderChannel() {
+function HeaderChannel({ name }) {
   return (
-    <div class="header">
+    <div
+      css={{
+        display: "flex",
+        justifyContent: "space-between",
+        height: 42,
+        width: "100%",
+        alignItems: "center",
+        paddingTop: 11,
+        paddingBottom: 7,
+        borderBottom: "1px solid lightgray"
+      }}
+    >
       <div class="channel-info">
         <i id="hamburguer" class="fas fa-bars" />
         <p class="channel-title" id="channel-title">
