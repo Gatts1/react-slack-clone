@@ -2,28 +2,21 @@
 import React from 'react';
 import { jsx } from '@emotion/core';
 
-
 function MessageSend() {
-  
   return (
     <>
-      <div 
-        css=
-        {{
+      <div
+        css={{
           overflowY: 'auto',
           overflowX: 'hidden',
           height: '90%',
           width: '98%',
           paddingLeft: '15px',
           textAlign: 'end'
-        }}>
-      </div>
+        }}
+      />
       <div class="input-msg">
-        <form
-          class="input-detail"
-          action="javascript:makeComment();"
-          autocomplete="off"
-        >
+        <form class="input-detail" autocomplete="off">
           <label for="input-message" aria-label="write a message" />
           <input
             css={{
