@@ -2,6 +2,8 @@
 import React from "react";
 import { jsx } from "@emotion/core";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 function HeaderChannel({ name }) {
   return (
     <div
@@ -16,7 +18,6 @@ function HeaderChannel({ name }) {
         borderBottom: "1px solid lightgray"
       }}
     >
-<<<<<<< HEAD
       <div
         css={{
           marginBottom: 18,
@@ -34,12 +35,6 @@ function HeaderChannel({ name }) {
           }}
         >
           #{name}
-=======
-      <div class="channel-info">
-        <i id="hamburguer" class="fas fa-bars" />
-        <p class="channel-title" id="channel-title">
-          #general
->>>>>>> Add emotion and css in div general
         </p>
         <div
           css={{
