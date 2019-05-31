@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-import React from 'react';
+import React from "react";
 
 function AddChannel() {
   const [showChannel, setShowChannel] = React.useState(false);
@@ -33,12 +32,6 @@ function AddChannel() {
       )}
     </>
   );
-=======
-import React from "react";
-
-function AddChannel() {
-  return <h1>AddChannel</h1>;
->>>>>>> Add fontawesome components and styles
 }
 
 export default AddChannel;
