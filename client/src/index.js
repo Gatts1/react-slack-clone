@@ -6,6 +6,7 @@ import { render } from "react-dom";
 // const $root = document.getElementById("root");
 // render(<App url="ws://localhost:4000" />, $root);
 import Header from "./header-channel";
+import Date from "./message-separator-date";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
@@ -19,4 +20,4 @@ library.add(fas, faStar, faUser, faThumbtack);
 
 const $root = document.getElementById("root");
 
-render(<Header />, $root);
+render(<Date date="05/31/2019" />, $root);
