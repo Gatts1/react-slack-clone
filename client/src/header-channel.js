@@ -1,9 +1,6 @@
 /** @jsx jsx */
-<<<<<<< HEAD
-// import React from "react";
-=======
+
 import React from "react";
->>>>>>> c338c48f1837fd30980b95a2d78bb49b022d3997
 import { jsx } from "@emotion/core";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -28,10 +25,7 @@ function HeaderChannel({ name }) {
           marginLeft: 18
         }}
       >
-<<<<<<< HEAD
         {/* <i id="hamburguer" class="fas fa-bars" /> */}
-=======
->>>>>>> c338c48f1837fd30980b95a2d78bb49b022d3997
         <p
           id="channel-title"
           css={{
