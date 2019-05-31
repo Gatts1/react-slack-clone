@@ -1,9 +1,9 @@
 import React from "react";
 import LeftSide from "./left-side";
 
-function Main({ submitSendChannel, listChannel }) {
+function Main({ submitSendChannel, listChannel, username }) {
   return (
-    <LeftSide submitSendChannel={submitSendChannel} listChannel={listChannel} />
+    <LeftSide submitSendChannel={submitSendChannel} listChannel={listChannel} username={username} />
   );
 }
 

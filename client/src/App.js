@@ -7,7 +7,9 @@ function App({ url }) {
 
   const [listMessage, setListMessage] = React.useState([]);
   const [content, setContent] = React.useState("");
+
   const [connected, setConnected] = React.useState(false);
+  
   const [listChannel, setListChannel] = React.useState([
     { name: "general", id: Date.now() }
   ]);
@@ -64,9 +66,9 @@ function App({ url }) {
   return (
     <>
       {isLogged ? (
-        <Main submitSendChannel={submitSendChannel} listChannel={listChannel} />
+        <Main submitSendChannel={submitSendChannel} listChannel={listChannel} username={username} />
       ) : (
-        <Login setIsLogged={setIsLogged} />
+        <Login setIsLogged={setIsLogged} setUsername={setUsername}/>
       )}
     </>
   );

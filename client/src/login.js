@@ -1,9 +1,9 @@
 import React from "react";
 
-function Login({ setIsLogged }) {
+function Login({ setIsLogged, setUsername }) {
   function handleOnSubmit(event) {
     event.preventDefault();
-    console.log(event.target.elements.user.value);
+    setUsername(event.target.elements.user.value);
     setIsLogged(true);
   }
 
