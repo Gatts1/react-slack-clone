@@ -15,8 +15,8 @@ function MessageSend() {
           textAlign: 'end'
         }}
       />
-      <div class="input-msg">
-        <form class="input-detail" autocomplete="off">
+      <div>
+        <form autocomplete="off">
           <label for="input-message" aria-label="write a message" />
           <input
             css={{
