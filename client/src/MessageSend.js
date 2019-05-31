@@ -2,7 +2,15 @@
 import React from 'react';
 import { jsx } from '@emotion/core';
 
+
 function MessageSend() {
+    let inputElement = document.getElementById("input-message");
+    let inputMessage = inputElement.value;
+    if (inputMessage != "") {
+      send(inputMessage);
+      inputElement.parentElement.reset();
+    }
+  
   return (
     <>
       <div 
