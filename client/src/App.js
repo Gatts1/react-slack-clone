@@ -1,7 +1,7 @@
 import React from "react";
 import WorkspaceInfo from "./WorkspaceInfo";
 import ChannelsSection from "./ChannelsSection";
-import MessageSend from "./MessageSend";
+import MessageSection from "./MessageSection";
 
 function App({ url }) {
   const ws = React.useRef(null);
@@ -67,7 +67,7 @@ function App({ url }) {
           <li key={message.id}>{message.content}</li>
         ))}
       </ul>
-      <MessageSend />
+      <MessageSection />
     </>
   );
 }
