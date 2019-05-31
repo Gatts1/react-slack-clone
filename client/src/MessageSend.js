@@ -26,7 +26,6 @@ function MessageSend() {
             }}
             type="text"
             id="input-message"
-            class="input-message"
             placeholder="&#65291; |  Message #general"
           />
         </form>
