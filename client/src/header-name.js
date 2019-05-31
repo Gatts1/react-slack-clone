@@ -1,10 +1,10 @@
 import React from "react";
 
-function HeaderName() {
+function HeaderName({username}) {
   return (
     <>
       <h1>Codeable</h1>
-      <p>userName</p>
+      <p>{username}</p>
     </>
   );
 }
