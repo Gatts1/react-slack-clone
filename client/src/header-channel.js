@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import React from "react";
+// import React from "react";
 import { jsx } from "@emotion/core";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -78,9 +78,33 @@ function HeaderChannel({ name }) {
           <i class="fas fa-search" />
           <span>Search</span>
         </div>
-        <i class="fas fa-at" />
-        <i class="far fa-star" />
-        <i class="fas fa-ellipsis-v" />
+        <FontAwesomeIcon
+          icon="at"
+          css={{
+            color: "white",
+            strokeWidth: "20",
+            stroke: "black"
+          }}
+        />{" "}
+        {/* <i class="fas fa-at" /> */}
+        <FontAwesomeIcon
+          icon="star"
+          css={{
+            color: "white",
+            strokeWidth: "20",
+            stroke: "black"
+          }}
+        />{" "}
+        {/* <i class="far fa-star" /> */}
+        <FontAwesomeIcon
+          icon="ellipsis-v"
+          css={{
+            color: "white",
+            strokeWidth: "20",
+            stroke: "black"
+          }}
+        />{" "}
+        {/* <i class="fas fa-ellipsis-v" /> */}
       </div>
     </div>
   );

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from 'react';
 
 function AddChannel() {
@@ -32,6 +33,12 @@ function AddChannel() {
       )}
     </>
   );
+=======
+import React from "react";
+
+function AddChannel() {
+  return <h1>AddChannel</h1>;
+>>>>>>> Add fontawesome components and styles
 }
 
 export default AddChannel;
