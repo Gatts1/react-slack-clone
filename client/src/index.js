@@ -5,7 +5,7 @@ import { render } from "react-dom";
 
 // const $root = document.getElementById("root");
 // render(<App url="ws://localhost:4000" />, $root);
-import Header from "./header-channel";
+// import Header from "./header-channel";
 import Date from "./message-separator-date";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
