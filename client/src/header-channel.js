@@ -33,7 +33,7 @@ function HeaderChannel({ name }) {
             paddingLeft: 5
           }}
         >
-          #general
+          #{name}
         </p>
         <div
           css={{
