@@ -1,12 +1,13 @@
-import React from 'react';
+import React from "react";
 
-function AddChannel() {
+function ChannelCreate({ submitSendChannel }) {
   const [showChannel, setShowChannel] = React.useState(false);
   function handleOnClick() {
     setShowChannel(true);
   }
   function handleOnSubmit(event) {
     event.preventDefault();
+    submitSendChannel(event.target.elements.createChannel.value);
     setShowChannel(false);
   }
   return (
@@ -24,7 +25,7 @@ function AddChannel() {
               organized around a topic — #leads, for example.
             </p>
             <label htmlFor="createChannel">Name</label>
-            <input type="text" id="createChannel" />
+            <input name="createChannel" type="text" id="createChannel" />
             <button type="submit">Create Channel</button>
             <button type="reset">Cancel</button>
           </form>
@@ -34,4 +35,4 @@ function AddChannel() {
   );
 }
 
-export default AddChannel;
+export default ChannelCreate;
