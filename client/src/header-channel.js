@@ -3,8 +3,6 @@
 import React from "react";
 import { jsx } from "@emotion/core";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 function HeaderChannel({ name }) {
   return (
     <div
@@ -21,7 +19,7 @@ function HeaderChannel({ name }) {
     >
       <div
         css={{
-          marginTop: 10,
+          marginBottom: 18,
           marginLeft: 18
         }}
       >
@@ -31,7 +29,7 @@ function HeaderChannel({ name }) {
           css={{
             fontWeight: "bolder",
             fontSize: 18,
-            marginBottom: 2,
+            margin: "0 0 10px 0",
             paddingLeft: 5
           }}
         >
@@ -44,25 +42,8 @@ function HeaderChannel({ name }) {
             visibility: "visible"
           }}
         >
-          <FontAwesomeIcon
-            icon="star"
-            css={{
-              color: "white",
-              strokeWidth: "20",
-              stroke: "black"
-            }}
-          />{" "}
-          |{" "}
-          <FontAwesomeIcon
-            icon="user"
-            css={{
-              color: "white",
-              strokeWidth: "20",
-              stroke: "black"
-            }}
-          />{" "}
-          0 |
-          <FontAwesomeIcon icon="thumbtack" /> 0 | Add topic
+          <i className="far fa-star" /> | <i className="far fa-user" /> 0 |
+          <i className="fas fa-thumbtack" /> 0 | Add topic
         </div>
       </div>
       <div
@@ -75,12 +56,10 @@ function HeaderChannel({ name }) {
           justifyContent: "space-between"
         }}
       >
-        <FontAwesomeIcon icon="phone" /> {/* <i class="fas fa-phone" /> */}
-        <FontAwesomeIcon icon="info-circle" />{" "}
-        {/* <i class="fas fa-info-circle" /> */}
-        <FontAwesomeIcon icon="cog" /> {/* <i class="fas fa-cog" /> */}
+        <i class="fas fa-phone" />
+        <i class="fas fa-info-circle" />
+        <i class="fas fa-cog" />
         <div
-          className="search-box"
           css={{
             height: 32,
             width: 195,
@@ -95,38 +74,12 @@ function HeaderChannel({ name }) {
             visibility: "visible"
           }}
         >
-          <FontAwesomeIcon icon="search" /> {/* <i class="fas fa-search" /> */}
-          <span css={{ marginLeft: 5, fontSize: 15, color: "#666666" }}>
-            Search
-          </span>
+          <i class="fas fa-search" />
+          <span>Search</span>
         </div>
-        <FontAwesomeIcon
-          icon="at"
-          css={{
-            color: "white",
-            strokeWidth: "20",
-            stroke: "black"
-          }}
-        />{" "}
-        {/* <i class="fas fa-at" /> */}
-        <FontAwesomeIcon
-          icon="star"
-          css={{
-            color: "white",
-            strokeWidth: "20",
-            stroke: "black"
-          }}
-        />{" "}
-        {/* <i class="far fa-star" /> */}
-        <FontAwesomeIcon
-          icon="ellipsis-v"
-          css={{
-            color: "white",
-            strokeWidth: "20",
-            stroke: "black"
-          }}
-        />{" "}
-        {/* <i class="fas fa-ellipsis-v" /> */}
+        <i class="fas fa-at" />
+        <i class="far fa-star" />
+        <i class="fas fa-ellipsis-v" />
       </div>
     </div>
   );
