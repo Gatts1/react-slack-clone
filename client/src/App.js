@@ -2,6 +2,7 @@ import React from "react";
 import WorkspaceInfo from "./WorkspaceInfo";
 import ChannelsSection from "./ChannelsSection";
 
+
 function App({ url }) {
   const ws = React.useRef(null);
 
@@ -49,6 +50,7 @@ function App({ url }) {
     <>
       <WorkspaceInfo />
       <ChannelsSection />
+
       <form onSubmit={handleSubmit}>
         <label htmlFor="message">Message</label>
         <input
