@@ -66,23 +66,6 @@ function App({ url }) {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="message">Message</label>
-        <input
-          type="text"
-          name="message"
-          id="message"
-          disabled={!connected}
-          value={content}
-          onChange={event => setContent(event.target.value)}
-        />
-        <button>Send</button>
-      </form>
-      <ul>
-        {listMessage.map(message => (
-          <li key={message.id}>{message.content}</li>
-        ))}
-      </ul>
       {isLogged ? (
         <Main
           submitSendChannel={submitSendChannel}
