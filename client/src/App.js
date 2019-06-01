@@ -1,18 +1,18 @@
-import React from 'react';
-import MessageSend from './MessageSend';
-import Main from './main';
-import Login from './login';
+import React from "react";
+import MessageSend from "./MessageSend";
+import Main from "./main";
+import Login from "./login";
 
 function App({ url }) {
   const ws = React.useRef(null);
 
   const [listMessage, setListMessage] = React.useState([]);
-  const [content, setContent] = React.useState('');
+  const [content, setContent] = React.useState("");
 
   const [connected, setConnected] = React.useState(false);
 
   const [listChannel, setListChannel] = React.useState([
-    { name: 'general', id: Date.now() }
+    { name: "general", id: Date.now() }
   ]);
   const [isLogged, setIsLogged] = React.useState(false);
   const [username, setUsername] = React.useState(null);
@@ -29,15 +29,15 @@ function App({ url }) {
   React.useEffect(() => {
     if (ws.current) {
       ws.current.onopen = () => {
-        console.log('open');
+        console.log("open");
         setConnected(true);
       };
       ws.current.onclose = () => {
-        console.log('close');
+        console.log("close");
         setConnected(false);
       };
       ws.current.onmessage = ({ data }) => {
-        console.log('data', data);
+        console.log("data", data);
         //setListMessage(state => state.concat(JSON.parse(data)));
       };
     }
@@ -51,7 +51,7 @@ function App({ url }) {
         content
       })
     );
-    setContent('');
+    setContent("");
   }
 
   function submitSendChannel(channelName) {
