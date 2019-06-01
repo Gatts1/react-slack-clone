@@ -3,85 +3,18 @@ import React from "react";
 import { jsx } from "@emotion/core";
 import Message from "./message-body";
 import Separator from "./message-separator-date";
+import { log } from "util";
 
-function MessageSection() {
-  const messages = [
-    {
-      id: "1",
-      author: "test1",
-      content: "hola",
-      date: "2019-06-01T03:22:31.182Z"
-    },
-    {
-      id: "2",
-      author: "test2",
-      content: "que",
-      date: "2019-07-01T03:22:31.182Z"
-    },
-    {
-      id: "3",
-      author: "test2",
-      content: "que",
-      date: "2019-08-01T03:22:31.182Z"
-    },
-    {
-      id: "4",
-      author: "test2",
-      content: "que",
-      date: "2019-09-01T03:22:31.182Z"
-    },
-    {
-      id: "5",
-      author: "test3",
-      content: "asdf",
-      date: "2019-10-01T03:22:31.182Z"
-    },
-    {
-      id: "6",
-      author: "test3",
-      content: "qwerty",
-      date: "2019-05-31T00:00:00.182Z"
-    },
-    {
-      id: "7",
-      author: "test4",
-      content: "azerty",
-      date: "2019-05-01T03:22:31.182Z"
-    },
-    {
-      id: "8",
-      author: "test4",
-      content: "12345",
-      date: "2019-04-01T03:22:31.182Z"
-    },
-    {
-      id: "9",
-      author: "test5",
-      content: "bye",
-      date: "2019-03-01T03:22:31.182Z"
-    },
-    {
-      id: "10",
-      author: "test5",
-      content: "adios",
-      date: "2019-02-01T03:22:31.182Z"
-    },
-    {
-      id: "11",
-      author: "Brayan",
-      content: "adios",
-      date: "2019-06-01T07:22:31.182Z"
-    },
-    {
-      id: "12",
-      author: "Brayan",
-      content: "adios33",
-      date: "2019-06-01T09:22:31.182Z"
-    }
-  ];
+function MessageSection({ listMessages }) {
+  const messages = listMessages;
+  const containerRef = React.useRef(null);
 
+  React.useEffect(() => {
+    containerRef.current.scrollTo(0, containerRef.current.scrollHeight);
+  });
   return (
     <div
+      ref={containerRef}
       css={{
         overflowY: "auto",
         overflowX: "hidden",

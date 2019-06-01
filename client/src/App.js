@@ -5,7 +5,6 @@ import Login from "./login";
 function App({ url }) {
   const ws = React.useRef(null);
 
-  const [listMessage, setListMessage] = React.useState([]);
   const [content, setContent] = React.useState("");
 
   const [connected, setConnected] = React.useState(false);
@@ -15,6 +14,8 @@ function App({ url }) {
   ]);
   const [isLogged, setIsLogged] = React.useState(false);
   const [username, setUsername] = React.useState(null);
+
+  const [listMessages, setListMessages] = React.useState([]);
 
   React.useEffect(() => {
     if (username) {
@@ -69,12 +70,33 @@ function App({ url }) {
     );
   }
 
+  function submitSendMessage(messageContent) {
+    setListMessages(
+      listMessages.concat({
+        id: new Date().toISOString(),
+        author: username,
+        content: messageContent,
+        date: new Date().toISOString()
+      })
+    );
+    ws.current.send(
+      JSON.stringify({
+        id: new Date().toISOString(),
+        author: username,
+        content: messageContent,
+        date: new Date().toISOString()
+      })
+    );
+  }
+
   return (
     <>
       {isLogged ? (
         <Main
           submitSendChannel={submitSendChannel}
           listChannel={listChannel}
+          submitSendMessage={submitSendMessage}
+          listMessages={listMessages}
           username={username}
         />
       ) : (

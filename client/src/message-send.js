@@ -2,7 +2,13 @@
 import React from "react";
 import { jsx } from "@emotion/core";
 
-function MessageSend() {
+function MessageSend({ submitSendMessage }) {
+  function handleOnSubmit(event) {
+    event.preventDefault();
+    submitSendMessage(event.target.elements.inputMessage.value);
+    event.target.elements.inputMessage.value = "";
+  }
+
   return (
     <>
       <div
@@ -13,6 +19,7 @@ function MessageSend() {
         }}
       >
         <form
+          onSubmit={handleOnSubmit}
           autoComplete="off"
           css={{
             width: "89%"
@@ -20,6 +27,7 @@ function MessageSend() {
         >
           <label htmlFor="input-message" aria-label="write a message" />
           <input
+            name="inputMessage"
             type="text"
             id="input-message"
             css={{
