@@ -44,7 +44,7 @@ function ChannelCreate({ submitSendChannel }) {
             border: "1px solid #a7a3a8",
             marginRight: "15px",
             borderRadius: "50%",
-            padding: "2px",
+            padding: "4px",
             fontSize: "10px",
             color: "#a7a3a8",
             "&:hover": {
