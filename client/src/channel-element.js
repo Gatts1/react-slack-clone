@@ -13,9 +13,7 @@ function ChannelElement({ channelName }) {
       css={{
         boxSizing: "border-box",
         width: "100%",
-        paddingTop: "3px",
-        paddingBottom: "3px",
-        paddingLeft: "10px",
+        padding: "3px 0 3px 10px",
         listStyle: "none",
         color: "rgb(167, 163, 168)",
         "&:hover": {
