@@ -18,6 +18,12 @@ function App({ url }) {
   const [username, setUsername] = React.useState(null);
 
   React.useEffect(() => {
+    if (username) {
+      setIsLogged(true);
+    }
+  }, [username]);
+
+  React.useEffect(() => {
     const server = new WebSocket(url);
     ws.current = server;
     return () => {
@@ -73,7 +79,7 @@ function App({ url }) {
           username={username}
         />
       ) : (
-        <Login setIsLogged={setIsLogged} setUsername={setUsername} />
+        <Login setUsername={setUsername} />
       )}
       <MessageSend />
     </>
