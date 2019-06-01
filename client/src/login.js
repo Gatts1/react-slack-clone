@@ -17,12 +17,12 @@ function Login({ setUsername }) {
           width: "37%",
           color: "#333333",
           margin: "0 auto",
-          padding: "10px 0",
           alignItems: "center",
           justifyContent: "space-around",
           display: "flex",
           flexWrap: "wrap",
-          height: "60%"
+          height: "60%",
+          padding: "6rem 2rem"
         }}
       >
         <form
@@ -56,11 +56,9 @@ function Login({ setUsername }) {
               css={{
                 lineHeight: "1.5em",
                 border: "1px solid gray",
-                color: "#fff",
                 fontSize: "1.1em",
                 fontWeight: "600",
                 padding: "0.5em",
-                cursor: "pointer",
                 borderRadius: "0.25rem",
                 marginBottom: "5px"
               }}

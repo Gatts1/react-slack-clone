@@ -4,6 +4,7 @@ import { jsx } from "@emotion/core";
 
 import HeaderChannel from "./header-channel";
 import MessageSection from "./message-section";
+import MessageSend from "./message-send";
 
 function RightSide() {
   return (
@@ -19,6 +20,7 @@ function RightSide() {
     >
       <HeaderChannel name="general" />
       <MessageSection />
+      <MessageSend />
     </div>
   );
 }
