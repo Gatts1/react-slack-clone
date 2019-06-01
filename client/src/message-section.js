@@ -65,6 +65,18 @@ function MessageSection() {
       author: "test5",
       content: "adios",
       date: "2019-02-01T03:22:31.182Z"
+    },
+    {
+      id: "11",
+      author: "Brayan",
+      content: "adios",
+      date: "2019-06-01T07:22:31.182Z"
+    },
+    {
+      id: "12",
+      author: "Brayan",
+      content: "adios33",
+      date: "2019-06-01T09:22:31.182Z"
     }
   ];
 
@@ -79,15 +91,32 @@ function MessageSection() {
         textAlign: "end"
       }}
     >
-      {messages.map(message => {
-        return (
+      {messages.map((message, index) => {
+        message.date = new Date(message.date);
+        let component = (
           <Message
             key={message.id}
             author={message.author}
-            time={message.date}
+            time={message.date.toLocaleTimeString(undefined, {
+              hour: "2-digit",
+              minute: "2-digit"
+            })}
             content={message.content}
           />
         );
+        if (
+          index === 0 ||
+          message.date.toLocaleDateString() !==
+            new Date(messages[index - 1].date).toLocaleDateString()
+        ) {
+          return (
+            <>
+              <Separator date={message.date} />
+              {component}
+            </>
+          );
+        }
+        return component;
       })}
     </div>
   );
