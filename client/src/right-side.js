@@ -1,15 +1,27 @@
+/** @jsx jsx */
 import React from "react";
 import { jsx } from "@emotion/core";
 
 import HeaderChannel from "./header-channel";
-import ChannelElement from "./channel-element";
+import MessageSection from "./message-section";
+import MessageSend from "./message-send";
 
 function RightSide() {
   return (
-    <>
-      <HeaderChannel />
-      <ChannelElement />
-    </>
+    <div
+      css={{
+        display: "flex",
+        flexDirection: "column",
+        height: "100vh",
+        justifyContent: "space-between",
+        alignItems: "center",
+        flexGrow: 1
+      }}
+    >
+      <HeaderChannel name="general" />
+      <MessageSection />
+      <MessageSend />
+    </div>
   );
 }
 

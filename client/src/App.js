@@ -1,5 +1,4 @@
 import React from "react";
-import MessageSend from "./MessageSend";
 import Main from "./main";
 import Login from "./login";
 
@@ -81,7 +80,6 @@ function App({ url }) {
       ) : (
         <Login setUsername={setUsername} />
       )}
-      <MessageSend />
     </>
   );
 }
