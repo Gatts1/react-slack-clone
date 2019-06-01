@@ -1,12 +1,12 @@
 import React from "react";
 
-function WorkspaceInfo() {
+function HeaderName({username}) {
   return (
     <>
       <h1>Codeable</h1>
-      <p>userName</p>
+      <p>{username}</p>
     </>
   );
 }
 
-export default WorkspaceInfo;
+export default HeaderName;
