@@ -47,7 +47,6 @@ function HeaderChannel({ name }) {
         </div>
       </div>
       <div
-        className="channel-options"
         css={{
           display: "flex",
           alignItems: "center",
@@ -56,9 +55,9 @@ function HeaderChannel({ name }) {
           justifyContent: "space-between"
         }}
       >
-        <i class="fas fa-phone" />
-        <i class="fas fa-info-circle" />
-        <i class="fas fa-cog" />
+        <i className="fas fa-phone" />
+        <i className="fas fa-info-circle" />
+        <i className="fas fa-cog" />
         <div
           css={{
             height: 32,
@@ -74,12 +73,12 @@ function HeaderChannel({ name }) {
             visibility: "visible"
           }}
         >
-          <i class="fas fa-search" />
+          <i className="fas fa-search" />
           <span>Search</span>
         </div>
-        <i class="fas fa-at" />
-        <i class="far fa-star" />
-        <i class="fas fa-ellipsis-v" />
+        <i className="fas fa-at" />
+        <i className="far fa-star" />
+        <i className="fas fa-ellipsis-v" />
       </div>
     </div>
   );

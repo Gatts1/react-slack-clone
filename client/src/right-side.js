@@ -1,7 +1,9 @@
+/** @jsx jsx */
 import React from "react";
 import { jsx } from "@emotion/core";
 
 import HeaderChannel from "./header-channel";
+import MessageSection from "./message-section";
 
 function RightSide() {
   return (
@@ -15,7 +17,8 @@ function RightSide() {
         flexGrow: 1
       }}
     >
-      <HeaderChannel />
+      <HeaderChannel name="general" />
+      <MessageSection />
     </div>
   );
 }
