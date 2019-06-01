@@ -2,7 +2,17 @@
 import React from "react";
 import { jsx } from "@emotion/core";
 
-function MessageSend() {
+function MessageSend(submitMessage) {
+  const [showMesage, setMessage] = React.useState(false);
+
+  function handleOnClick() {
+    setMessage(true);
+  }
+  function handleOnSubmit(event) {
+    event.preventDefault();
+    submitMessage(event.target.elements.inputMessage.value);
+    setMessage(false);
+  }
   return (
     <>
       <div
@@ -25,7 +35,7 @@ function MessageSend() {
               borderRadius: "10px"
             }}
             type="text"
-            id="input-message"
+            id="inputMessage"
             placeholder="&#65291; |  Message #general"
           />
         </form>
