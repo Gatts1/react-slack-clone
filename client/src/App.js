@@ -1,7 +1,7 @@
 import React from "react";
+import MessageSend from "./MessageSend";
 import Main from "./main";
 import Login from "./login";
-
 
 function App({ url }) {
   const ws = React.useRef(null);
@@ -10,7 +10,7 @@ function App({ url }) {
   const [content, setContent] = React.useState("");
 
   const [connected, setConnected] = React.useState(false);
-  
+
   const [listChannel, setListChannel] = React.useState([
     { name: "general", id: Date.now() }
   ]);
@@ -67,10 +67,15 @@ function App({ url }) {
   return (
     <>
       {isLogged ? (
-        <Main submitSendChannel={submitSendChannel} listChannel={listChannel} username={username} />
+        <Main
+          submitSendChannel={submitSendChannel}
+          listChannel={listChannel}
+          username={username}
+        />
       ) : (
-        <Login setIsLogged={setIsLogged} setUsername={setUsername}/>
+        <Login setIsLogged={setIsLogged} setUsername={setUsername} />
       )}
+      <MessageSend />
     </>
   );
 }
