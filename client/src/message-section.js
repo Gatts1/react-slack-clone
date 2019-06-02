@@ -43,7 +43,7 @@ function MessageSection({ listMessages }) {
         ) {
           return (
             <>
-              <Separator date={message.date} />
+              <Separator key={message.date.getTime()} date={message.date} />
               {component}
             </>
           );
