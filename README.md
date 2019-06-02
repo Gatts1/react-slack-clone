@@ -48,15 +48,44 @@ Create a multi channel chat application using the WebSocket server in [codeableo
 
 To execute the project, do the following:
 ```
+npm install
 npm start
 ```
-in another terminal window do:
+the script is adapted to launch the service through `PORT=4000`.
+
+In another terminal window do:
 ```
 cd client/
+npm install
 npm start
 ```
 
 ## Project components
-![App window](./documentation/images/components_main.png)
-![left side component](./documentation/images/components_left_side.png)
-![right side component](./documentation/images/components_right_side.png)
+
+Components in `App`
+
+![App window](./client/documentation/images/components_main.png)
+
+Components in `left-side`
+
+![left side component](./client/documentation/images/components_left_side.png)
+
+Components in `right-side`
+
+![right side component](./client/documentation/images/components_right_side.png)
+
+Source file is a [Balsamiq](https://balsamiq.com/) file: [slack_project.bmpr](./client/documentation/slack_project.bmpr)
+
+## User Interface
+
+Login screen
+
+![Login screen](./client/documentation/images/01login.png)
+
+Chat Window
+
+![Chat window](./client/documentation/images/02chat.png)
+
+Chat Window, create channel
+
+![Chat window - create channel](./client/documentation/images/03chat.png)
