@@ -1,5 +1,4 @@
 import React from "react";
-import MessageSend from "./MessageSend";
 import Main from "./main";
 import Login from "./login";
 
@@ -16,6 +15,12 @@ function App({ url }) {
   ]);
   const [isLogged, setIsLogged] = React.useState(false);
   const [username, setUsername] = React.useState(null);
+
+  React.useEffect(() => {
+    if (username) {
+      setIsLogged(true);
+    }
+  }, [username]);
 
   React.useEffect(() => {
     const server = new WebSocket(url);
@@ -73,9 +78,8 @@ function App({ url }) {
           username={username}
         />
       ) : (
-        <Login setIsLogged={setIsLogged} setUsername={setUsername} />
+        <Login setUsername={setUsername} />
       )}
-      <MessageSend />
     </>
   );
 }
