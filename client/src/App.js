@@ -49,19 +49,32 @@ function App({ url }) {
       ws.current.onclose = () => {
         console.log("close");
         setConnected(false);
+        ws.current = new WebSocket(url);
       };
       ws.current.onmessage = ({ data }) => {
         console.log("data", data);
-        //setListMessage(state => state.concat(JSON.parse(data)));
+        const messageReceive = JSON.parse(data);
+
+        if (messageReceive.hasOwnProperty("newChannel")) {
+          receiveNewChannel(messageReceive);
+          return;
+        }
+
+        if (
+          messageReceive.hasOwnProperty("channel") &&
+          messageReceive.hasOwnProperty("body")
+        ) {
+          receiveNewMessage(messageReceive);
+          return;
+        }
       };
     }
-  });
+  }, [ws.current]);
 
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
   React.useEffect(() => {
-    console.log("23");
     setListMessages(listChannel[indexChannelActive]["messages"]);
   }, [indexChannelActive]);
 
@@ -77,28 +90,26 @@ function App({ url }) {
 
 >>>>>>> Add little useEffect
   function submitSendChannel(channelName) {
-    setListChannel(
-      listChannel.concat({ id: Date.now(), name: channelName, messages: [] })
-    );
-    ws.current.send(
-      JSON.stringify({
-        name: channelName,
-        id: Date.now()
-      })
-    );
+    const newChannel = { id: Date.now(), name: channelName, messages: [] };
+    if (connected) ws.current.send(JSON.stringify({ newChannel: newChannel }));
   }
 
   function submitSendMessage(messageContent) {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Join a new channel and change amoung them
     let newMessage = {
+=======
+    const newMessage = {
+>>>>>>> Fix bugs
       id: new Date().toISOString(),
       author: username,
       content: messageContent,
       date: new Date().toISOString()
     };
+<<<<<<< HEAD
     setListMessages(listMessages.concat(newMessage));
     listChannel[indexChannelActive]["messages"].push(newMessage);
 <<<<<<< HEAD
@@ -131,6 +142,15 @@ function App({ url }) {
         date: new Date().toISOString()
       })
     );
+=======
+    if (connected)
+      ws.current.send(
+        JSON.stringify({
+          channel: listChannel[indexChannelActive]["name"],
+          body: newMessage
+        })
+      );
+>>>>>>> Fix bugs
   }
 
   function changeActiveChannel(newId) {
@@ -138,11 +158,33 @@ function App({ url }) {
   }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> Add setIndexChannelActive functionality
 =======
 >>>>>>> Join a new channel and change amoung them
+=======
+
+  function receiveNewChannel(channel) {
+    setListChannel(listChannel.concat(channel["newChannel"]));
+  }
+
+  function receiveNewMessage(message) {
+    if (message["channel"] === listChannel[indexChannelActive]["name"]) {
+      setListMessages(listMessages.concat(message["body"]));
+      listChannel[indexChannelActive]["messages"].push(message["body"]);
+    } else {
+      listChannel.map((channel, index) => {
+        if (channel["name"] === message["channel"])
+          channel["messages"].push(message["body"]);
+
+        return channel;
+      });
+    }
+  }
+
+>>>>>>> Fix bugs
   return (
     <>
       {isLogged ? (
