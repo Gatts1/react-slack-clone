@@ -49,11 +49,14 @@ function App({ url }) {
     }
   });
 
+<<<<<<< HEAD
   React.useEffect(() => {
     console.log("23");
     setListMessages(listChannel[indexChannelActive]["messages"]);
   }, [indexChannelActive]);
 
+=======
+>>>>>>> Add setIndexChannelActive functionality
   function submitSendChannel(channelName) {
     setListChannel(
       listChannel.concat({ id: Date.now(), name: channelName, messages: [] })
@@ -88,6 +91,10 @@ function App({ url }) {
   function changeActiveChannel(newId) {
     setIndexChannelActive(newId);
   }
+<<<<<<< HEAD
+=======
+
+>>>>>>> Add setIndexChannelActive functionality
   return (
     <>
       {isLogged ? (
@@ -97,7 +104,10 @@ function App({ url }) {
           submitSendMessage={submitSendMessage}
           listMessages={listMessages}
           username={username}
+<<<<<<< HEAD
           channelName={listChannel[indexChannelActive]["name"]}
+=======
+>>>>>>> Add setIndexChannelActive functionality
           setIndexChannelActive={setIndexChannelActive}
         />
       ) : (
