@@ -49,6 +49,13 @@ function App({ url }) {
     }
   });
 
+  React.useEffect(() => {
+    setListMessages(
+      listMessages.filter(message => message.indexChannel == indexChannelActive)
+    );
+    console.log(listMessages);
+  }, [indexChannelActive]);
+
   function submitSendChannel(channelName) {
     setListChannel(listChannel.concat({ name: channelName, id: Date.now() }));
     ws.current.send(
@@ -69,7 +76,6 @@ function App({ url }) {
         indexChannel: indexChannelActive
       })
     );
-    console.log(listChannel);
     ws.current.send(
       JSON.stringify({
         id: new Date().toISOString(),
