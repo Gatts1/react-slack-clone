@@ -5,17 +5,17 @@ import Login from "./login";
 function App({ url }) {
   const ws = React.useRef(null);
 
-  const [content, setContent] = React.useState("");
-
   const [connected, setConnected] = React.useState(false);
+  const [isLogged, setIsLogged] = React.useState(false);
+  const [username, setUsername] = React.useState(null);
 
   const [listChannel, setListChannel] = React.useState([
     { name: "general", id: Date.now() }
   ]);
-  const [isLogged, setIsLogged] = React.useState(false);
-  const [username, setUsername] = React.useState(null);
 
   const [listMessages, setListMessages] = React.useState([]);
+
+  const [indexChannelActive, setIndexChannelActive] = React.useState(0);
 
   React.useEffect(() => {
     if (username) {

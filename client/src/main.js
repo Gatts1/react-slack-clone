@@ -6,9 +6,9 @@ import RightSide from "./right-side";
 function Main({
   submitSendChannel,
   listChannel,
-  username,
   submitSendMessage,
-  listMessages
+  listMessages,
+  username
 }) {
   return (
     <>
