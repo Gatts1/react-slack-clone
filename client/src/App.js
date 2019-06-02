@@ -41,53 +41,66 @@ function App({ url }) {
       ws.current.onclose = () => {
         console.log("close");
         setConnected(false);
+        ws.current = new WebSocket(url);
       };
       ws.current.onmessage = ({ data }) => {
-        console.log("data", data);
-        //setListMessage(state => state.concat(JSON.parse(data)));
+        let messageReceive = JSON.parse(data);
+
+        if (messageReceive.hasOwnProperty("newChannel")) {
+          receiveNewChannel(messageReceive["newChannel"]);
+        } else if (
+          messageReceive.hasOwnProperty("channel") &&
+          messageReceive.hasOwnProperty("body")
+        ) {
+          receiveNewMessage(messageReceive);
+        }
       };
     }
   });
 
   React.useEffect(() => {
-    console.log("23");
     setListMessages(listChannel[indexChannelActive]["messages"]);
   }, [indexChannelActive]);
 
   function submitSendChannel(channelName) {
-    setListChannel(
-      listChannel.concat({ id: Date.now(), name: channelName, messages: [] })
-    );
-    ws.current.send(
-      JSON.stringify({
-        name: channelName,
-        id: Date.now()
-      })
-    );
+    const newChannel = { id: Date.now(), name: channelName, messages: [] };
+    if (connected) ws.current.send(JSON.stringify({ newChannel: newChannel }));
   }
 
   function submitSendMessage(messageContent) {
-    let newMessage = {
+    const newMessage = {
       id: new Date().toISOString(),
       author: username,
       content: messageContent,
       date: new Date().toISOString()
     };
-    setListMessages(listMessages.concat(newMessage));
-    listChannel[indexChannelActive]["messages"].push(newMessage);
-    ws.current.send(
-      JSON.stringify({
-        id: new Date().toISOString(),
-        author: username,
-        content: messageContent,
-        date: new Date().toISOString()
-      })
-    );
+    if (connected)
+      ws.current.send(
+        JSON.stringify({
+          channel: listChannel[indexChannelActive]["name"],
+          body: newMessage
+        })
+      );
   }
 
-  function changeActiveChannel(newId) {
-    setIndexChannelActive(newId);
+  function receiveNewChannel(channel) {
+    setListChannel(listChannel.concat(channel));
   }
+
+  function receiveNewMessage(message) {
+    if (message["channel"] === listChannel[indexChannelActive]["name"]) {
+      setListMessages(listMessages.concat(message["body"]));
+      listChannel[indexChannelActive]["messages"].push(message["body"]);
+    } else {
+      listChannel.map((channel, index) => {
+        if (channel["name"] === message["channel"])
+          channel["messages"].push(message["body"]);
+
+        return channel;
+      });
+    }
+  }
+
   return (
     <>
       {isLogged ? (
