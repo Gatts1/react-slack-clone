@@ -55,6 +55,7 @@ function App({ url }) {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   React.useEffect(() => {
     console.log("23");
     setListMessages(listChannel[indexChannelActive]["messages"]);
@@ -64,6 +65,15 @@ function App({ url }) {
 >>>>>>> Add setIndexChannelActive functionality
 =======
 >>>>>>> Advances
+=======
+  React.useEffect(() => {
+    setListMessages(
+      listMessages.filter(message => message.indexChannel == indexChannelActive)
+    );
+    console.log(listMessages);
+  }, [indexChannelActive]);
+
+>>>>>>> Add little useEffect
   function submitSendChannel(channelName) {
     setListChannel(
       listChannel.concat({ id: Date.now(), name: channelName, messages: [] })
@@ -97,11 +107,14 @@ function App({ url }) {
       })
     );
 <<<<<<< HEAD
+<<<<<<< HEAD
     setListChannel();
 >>>>>>> Advances
 =======
     console.log(listChannel);
 >>>>>>> Add property to message object
+=======
+>>>>>>> Add little useEffect
     ws.current.send(
       JSON.stringify({
         id: new Date().toISOString(),
