@@ -10,7 +10,7 @@ function App({ url }) {
   const [username, setUsername] = React.useState(null);
 
   const [listChannel, setListChannel] = React.useState([
-    { name: "general", id: Date.now() }
+    { name: "general", id: Date.now(), messages: [] }
   ]);
 
   const [listMessages, setListMessages] = React.useState([]);
@@ -49,17 +49,6 @@ function App({ url }) {
     }
   });
 
-  function handleSubmit(event) {
-    event.preventDefault();
-    ws.current.send(
-      JSON.stringify({
-        id: Date.now(),
-        content
-      })
-    );
-    setContent("");
-  }
-
   function submitSendChannel(channelName) {
     setListChannel(listChannel.concat({ name: channelName, id: Date.now() }));
     ws.current.send(
@@ -79,6 +68,7 @@ function App({ url }) {
         date: new Date().toISOString()
       })
     );
+    setListChannel();
     ws.current.send(
       JSON.stringify({
         id: new Date().toISOString(),
