@@ -13,17 +13,16 @@ function MessageSend({ submitSendMessage, channelName }) {
     <>
       <div
         css={{
-          width: "100%",
-          gridTemplateColumns: "44px 1fr 22px 22px",
-          margin: "20px 0px"
+          overflowY: "auto",
+          overflowX: "hidden",
+          width: "98%",
+          paddingLeft: "15px",
+          textAlign: "end"
         }}
       >
         <form
           onSubmit={handleOnSubmitMessages}
           autoComplete="off"
-          css={{
-            width: "89%"
-          }}
         >
           <label htmlFor="input-message" aria-label="write a message" />
           <input
@@ -31,12 +30,9 @@ function MessageSend({ submitSendMessage, channelName }) {
             type="text"
             id="input-message"
             css={{
-              width: "100%",
-              height: 26,
-              padding: "9px 66px 9px 9px",
-              margin: "0px 15px",
-              border: "1px solid rgb(15, 15, 15)",
-              borderRadius: "0.5em"
+              width: "89%",
+              padding: "15px",
+              borderRadius: "10px"
             }}
             placeholder={`Send message to #${channelName}`}
           />

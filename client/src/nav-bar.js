@@ -21,7 +21,7 @@ function NavBar() {
       }}
     >
       <a
-        href="index.html"
+        href="index.html" aria-label="Index"
         alt="Logo"
         css={{
           background: `url(${logo}) left top no-repeat`,
@@ -54,7 +54,7 @@ function NavBar() {
           }}
         >
           <a
-            href="#"
+            href="#" aria-label="Index"
             css={{
               color: "rgb(185, 185, 185)",
               fontWeight: "900"

@@ -2,6 +2,7 @@
 import React from "react";
 import { jsx } from "@emotion/core";
 
+
 import avatar from "./assets/user_icon.png";
 
 function MessageBody({ author, time, content }) {

@@ -50,6 +50,7 @@ function MessageSection({ listMessages }) {
         }
         return component;
       })}
+      
     </div>
   );
 }
