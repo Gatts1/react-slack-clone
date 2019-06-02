@@ -11,10 +11,14 @@ function App({ url }) {
 
   const [listChannel, setListChannel] = React.useState([
 <<<<<<< HEAD
+<<<<<<< HEAD
     { id: Date.now(), name: "general", messages: [] }
 =======
     { name: "general", id: Date.now() }
 >>>>>>> Add property to message object
+=======
+    { id: Date.now(), name: "general", messages: [] }
+>>>>>>> Join a new channel and change amoung them
   ]);
 
   const [listMessages, setListMessages] = React.useState([]);
@@ -67,10 +71,8 @@ function App({ url }) {
 >>>>>>> Advances
 =======
   React.useEffect(() => {
-    setListMessages(
-      listMessages.filter(message => message.indexChannel == indexChannelActive)
-    );
-    console.log(listMessages);
+    console.log("23");
+    setListMessages(listChannel[indexChannelActive]["messages"]);
   }, [indexChannelActive]);
 
 >>>>>>> Add little useEffect
@@ -88,6 +90,9 @@ function App({ url }) {
 
   function submitSendMessage(messageContent) {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Join a new channel and change amoung them
     let newMessage = {
       id: new Date().toISOString(),
       author: username,
@@ -96,6 +101,7 @@ function App({ url }) {
     };
     setListMessages(listMessages.concat(newMessage));
     listChannel[indexChannelActive]["messages"].push(newMessage);
+<<<<<<< HEAD
 =======
     setListMessages(
       listMessages.concat({
@@ -115,6 +121,8 @@ function App({ url }) {
 >>>>>>> Add property to message object
 =======
 >>>>>>> Add little useEffect
+=======
+>>>>>>> Join a new channel and change amoung them
     ws.current.send(
       JSON.stringify({
         id: new Date().toISOString(),
@@ -129,9 +137,12 @@ function App({ url }) {
     setIndexChannelActive(newId);
   }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> Add setIndexChannelActive functionality
+=======
+>>>>>>> Join a new channel and change amoung them
   return (
     <>
       {isLogged ? (
@@ -139,14 +150,16 @@ function App({ url }) {
           submitSendChannel={submitSendChannel}
           listChannel={listChannel}
           submitSendMessage={submitSendMessage}
-          listMessages={listMessages.filter(
-            message => message.indexChannel == indexChannelActive
-          )}
+          listMessages={listMessages}
           username={username}
+<<<<<<< HEAD
 <<<<<<< HEAD
           channelName={listChannel[indexChannelActive]["name"]}
 =======
 >>>>>>> Add setIndexChannelActive functionality
+=======
+          channelName={listChannel[indexChannelActive]["name"]}
+>>>>>>> Join a new channel and change amoung them
           setIndexChannelActive={setIndexChannelActive}
         />
       ) : (
