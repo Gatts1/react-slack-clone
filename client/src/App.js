@@ -5,17 +5,17 @@ import Login from "./login";
 function App({ url }) {
   const ws = React.useRef(null);
 
-  const [content, setContent] = React.useState("");
-
   const [connected, setConnected] = React.useState(false);
-
-  const [listChannel, setListChannel] = React.useState([
-    { name: "general", id: Date.now() }
-  ]);
   const [isLogged, setIsLogged] = React.useState(false);
   const [username, setUsername] = React.useState(null);
 
+  const [listChannel, setListChannel] = React.useState([
+    { id: Date.now(), name: "general", messages: [] }
+  ]);
+
   const [listMessages, setListMessages] = React.useState([]);
+
+  const [indexChannelActive, setIndexChannelActive] = React.useState(0);
 
   React.useEffect(() => {
     if (username) {
@@ -49,19 +49,15 @@ function App({ url }) {
     }
   });
 
-  function handleSubmit(event) {
-    event.preventDefault();
-    ws.current.send(
-      JSON.stringify({
-        id: Date.now(),
-        content
-      })
-    );
-    setContent("");
-  }
+  React.useEffect(() => {
+    console.log("23");
+    setListMessages(listChannel[indexChannelActive]["messages"]);
+  }, [indexChannelActive]);
 
   function submitSendChannel(channelName) {
-    setListChannel(listChannel.concat({ name: channelName, id: Date.now() }));
+    setListChannel(
+      listChannel.concat({ id: Date.now(), name: channelName, messages: [] })
+    );
     ws.current.send(
       JSON.stringify({
         name: channelName,
@@ -71,14 +67,14 @@ function App({ url }) {
   }
 
   function submitSendMessage(messageContent) {
-    setListMessages(
-      listMessages.concat({
-        id: new Date().toISOString(),
-        author: username,
-        content: messageContent,
-        date: new Date().toISOString()
-      })
-    );
+    let newMessage = {
+      id: new Date().toISOString(),
+      author: username,
+      content: messageContent,
+      date: new Date().toISOString()
+    };
+    setListMessages(listMessages.concat(newMessage));
+    listChannel[indexChannelActive]["messages"].push(newMessage);
     ws.current.send(
       JSON.stringify({
         id: new Date().toISOString(),
@@ -89,6 +85,9 @@ function App({ url }) {
     );
   }
 
+  function changeActiveChannel(newId) {
+    setIndexChannelActive(newId);
+  }
   return (
     <>
       {isLogged ? (
@@ -98,6 +97,8 @@ function App({ url }) {
           submitSendMessage={submitSendMessage}
           listMessages={listMessages}
           username={username}
+          channelName={listChannel[indexChannelActive]["name"]}
+          setIndexChannelActive={setIndexChannelActive}
         />
       ) : (
         <Login setUsername={setUsername} />

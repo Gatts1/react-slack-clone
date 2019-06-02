@@ -6,9 +6,11 @@ import RightSide from "./right-side";
 function Main({
   submitSendChannel,
   listChannel,
-  username,
   submitSendMessage,
-  listMessages
+  listMessages,
+  username,
+  setIndexChannelActive,
+  channelName
 }) {
   return (
     <>
@@ -40,10 +42,12 @@ function Main({
         submitSendChannel={submitSendChannel}
         listChannel={listChannel}
         username={username}
+        setIndexChannelActive={setIndexChannelActive}
       />
       <RightSide
         submitSendMessage={submitSendMessage}
         listMessages={listMessages}
+        channelName={channelName}
       />
     </>
   );

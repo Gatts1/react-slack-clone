@@ -2,8 +2,8 @@
 import React from "react";
 import { jsx } from "@emotion/core";
 
-function MessageSend({ submitSendMessage }) {
-  function handleOnSubmit(event) {
+function MessageSend({ submitSendMessage, channelName }) {
+  function handleOnSubmitMessages(event) {
     event.preventDefault();
     submitSendMessage(event.target.elements.inputMessage.value);
     event.target.elements.inputMessage.value = "";
@@ -19,7 +19,7 @@ function MessageSend({ submitSendMessage }) {
         }}
       >
         <form
-          onSubmit={handleOnSubmit}
+          onSubmit={handleOnSubmitMessages}
           autoComplete="off"
           css={{
             width: "89%"
@@ -38,7 +38,7 @@ function MessageSend({ submitSendMessage }) {
               border: "1px solid rgb(15, 15, 15)",
               borderRadius: "0.5em"
             }}
-            placeholder="&#65291; |  Message #general"
+            placeholder={`Send message to #${channelName}`}
           />
         </form>
       </div>
