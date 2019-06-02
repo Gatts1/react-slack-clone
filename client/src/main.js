@@ -12,7 +12,6 @@ function Main({
   setIndexChannelActive,
   channelName
 }) {
-  console.log(channelName);
   return (
     <>
       <Global
