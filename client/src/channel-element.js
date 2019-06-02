@@ -4,7 +4,6 @@ import { jsx } from "@emotion/core";
 
 function ChannelElement({ channelName, setIndexChannelActive, dataIndex }) {
   function handleClick(event) {
-    console.log("Add channel", channelName);
     setIndexChannelActive(dataIndex);
   }
 
