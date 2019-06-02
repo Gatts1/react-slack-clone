@@ -3,7 +3,13 @@ import { Global, jsx } from "@emotion/core";
 import LeftSide from "./left-side";
 import RightSide from "./right-side";
 
-function Main({ submitSendChannel, listChannel, username }) {
+function Main({
+  submitSendChannel,
+  listChannel,
+  username,
+  submitSendMessage,
+  listMessages
+}) {
   return (
     <>
       <Global
@@ -35,7 +41,10 @@ function Main({ submitSendChannel, listChannel, username }) {
         listChannel={listChannel}
         username={username}
       />
-      <RightSide />
+      <RightSide
+        submitSendMessage={submitSendMessage}
+        listMessages={listMessages}
+      />
     </>
   );
 }

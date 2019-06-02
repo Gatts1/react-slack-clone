@@ -3,76 +3,18 @@ import React from "react";
 import { jsx } from "@emotion/core";
 import Message from "./message-body";
 import Separator from "./message-separator-date";
-import messageSend from "./message-send";
-import MessageSend from "./message-send";
+import { log } from "util";
 
-function MessageSection() {
-  const messages = [
-    {
-      id: "1",
-      author: "test1",
-      content: "hola",
-      date: "2019-06-01T03:22:31.182Z"
-    },
-    {
-      id: "2",
-      author: "test2",
-      content: "que",
-      date: "2019-07-01T03:22:31.182Z"
-    },
-    {
-      id: "3",
-      author: "test2",
-      content: "que",
-      date: "2019-08-01T03:22:31.182Z"
-    },
-    {
-      id: "4",
-      author: "test2",
-      content: "que",
-      date: "2019-09-01T03:22:31.182Z"
-    },
-    {
-      id: "5",
-      author: "test3",
-      content: "asdf",
-      date: "2019-10-01T03:22:31.182Z"
-    },
-    {
-      id: "6",
-      author: "test3",
-      content: "qwerty",
-      date: "2019-05-31T00:00:00.182Z"
-    },
-    {
-      id: "7",
-      author: "test4",
-      content: "azerty",
-      date: "2019-05-01T03:22:31.182Z"
-    },
-    {
-      id: "8",
-      author: "test4",
-      content: "12345",
-      date: "2019-04-01T03:22:31.182Z"
-    },
-    {
-      id: "9",
-      author: "test5",
-      content: "bye",
-      date: "2019-03-01T03:22:31.182Z"
-    },
-    {
-      id: "10",
-      author: "test5",
-      content: "adios",
-      date: "2019-02-01T03:22:31.182Z"
-    }
-  ];
-  
+function MessageSection({ listMessages }) {
+  const messages = listMessages;
+  const containerRef = React.useRef(null);
 
+  React.useEffect(() => {
+    containerRef.current.scrollTo(0, containerRef.current.scrollHeight);
+  });
   return (
     <div
+      ref={containerRef}
       css={{
         overflowY: "auto",
         overflowX: "hidden",
@@ -82,15 +24,32 @@ function MessageSection() {
         textAlign: "end"
       }}
     >
-      {messages.map(message => {
-        return (
+      {messages.map((message, index) => {
+        message.date = new Date(message.date);
+        let component = (
           <Message
             key={message.id}
             author={message.author}
-            time={message.date}
+            time={message.date.toLocaleTimeString(undefined, {
+              hour: "2-digit",
+              minute: "2-digit"
+            })}
             content={message.content}
           />
         );
+        if (
+          index === 0 ||
+          message.date.toLocaleDateString() !==
+            new Date(messages[index - 1].date).toLocaleDateString()
+        ) {
+          return (
+            <>
+              <Separator date={message.date} />
+              {component}
+            </>
+          );
+        }
+        return component;
       })}
       
     </div>

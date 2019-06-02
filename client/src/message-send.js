@@ -2,17 +2,11 @@
 import React from "react";
 import { jsx } from "@emotion/core";
 
-
-
-function MessageSend() {
-  const [message, setMessage] = React.useState("");
-
-  function handleSubmit(event) {
-   event.preventDefault();
-   setMessage(false);
-  }
-  function handleChange(event) {
-    setMessage(event.target.value);
+function MessageSend({ submitSendMessage }) {
+  function handleOnSubmit(event) {
+    event.preventDefault();
+    submitSendMessage(event.target.elements.inputMessage.value);
+    event.target.elements.inputMessage.value = "";
   }
 
   return (
@@ -25,25 +19,21 @@ function MessageSend() {
           paddingLeft: "15px",
           textAlign: "end"
         }}
-      />
-      <div>
-        <p>{message}</p>
-        <form onSubmit={handleSubmit} onChange={handleChange}
+      >
+        <form
+          onSubmit={handleOnSubmit}
           autoComplete="off"
         >
           <label htmlFor="input-message" aria-label="write a message" />
-          <input 
+          <input
+            name="inputMessage"
+            type="text"
+            id="input-message"
             css={{
               width: "89%",
               padding: "15px",
               borderRadius: "10px"
             }}
-            type="text"
-            name="input-Message"
-            author= "Gatts"
-            content= {message}
-            date= "2019-02-01T03:22:31.182Z"
-
             
             placeholder="&#65291; |  Message #general"
           />

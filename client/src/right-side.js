@@ -6,7 +6,7 @@ import HeaderChannel from "./header-channel";
 import MessageSection from "./message-section";
 import MessageSend from "./message-send";
 
-function RightSide() {
+function RightSide({ submitSendMessage, listMessages }) {
   return (
     <div
       css={{
@@ -19,8 +19,8 @@ function RightSide() {
       }}
     >
       <HeaderChannel name="general" />
-      <MessageSection />
-      <MessageSend />
+      <MessageSection listMessages={listMessages} />
+      <MessageSend submitSendMessage={submitSendMessage} />
     </div>
   );
 }

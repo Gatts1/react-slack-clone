@@ -4,14 +4,15 @@ import { jsx } from "@emotion/core";
 
 function SeparatorDate({ date }) {
   const $now = new Date();
-  const $today = $now.getDate();
-  $now.setDate($today - 1);
+  const $today = $now.toLocaleDateString();
+  $now.setDate($now.getDate() - 1);
 
-  const $yesterday = $now.getDate();
-  date = new Date(date);
+  const $yesterday = $now.toLocaleDateString();
+
+  // date = new Date(date);
   let dateFormatted = date.toDateString();
-  if (date.getDate() == $today) dateFormatted = "Today";
-  else if (date.getDate() == $yesterday) dateFormatted = "Yesterday";
+  if (date.toLocaleDateString() === $today) dateFormatted = "Today";
+  if (date.toLocaleDateString() === $yesterday) dateFormatted = "Yesterday";
 
   return (
     <div
