@@ -3,7 +3,6 @@ import React from "react";
 import { jsx } from "@emotion/core";
 import Message from "./message-body";
 import Separator from "./message-separator-date";
-import { log } from "util";
 
 function MessageSection({ listMessages }) {
   const messages = listMessages;

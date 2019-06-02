@@ -4,7 +4,12 @@ import HeaderName from "./header-name";
 import ChannelsSection from "./channels-section";
 import { jsx } from "@emotion/core";
 
-function LeftSide({ submitSendChannel, listChannel, username }) {
+function LeftSide({
+  submitSendChannel,
+  listChannel,
+  username,
+  setIndexChannelActive
+}) {
   return (
     <div
       css={{
@@ -21,6 +26,7 @@ function LeftSide({ submitSendChannel, listChannel, username }) {
       <ChannelsSection
         submitSendChannel={submitSendChannel}
         listChannel={listChannel}
+        setIndexChannelActive={setIndexChannelActive}
       />
     </div>
   );
