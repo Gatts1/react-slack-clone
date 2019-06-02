@@ -49,17 +49,6 @@ function App({ url }) {
     }
   });
 
-  function handleSubmit(event) {
-    event.preventDefault();
-    ws.current.send(
-      JSON.stringify({
-        id: Date.now(),
-        content
-      })
-    );
-    setContent("");
-  }
-
   function submitSendChannel(channelName) {
     setListChannel(listChannel.concat({ name: channelName, id: Date.now() }));
     ws.current.send(
@@ -89,6 +78,10 @@ function App({ url }) {
     );
   }
 
+  function changeActiveChannel(newId) {
+    setIndexChannelActive(newId);
+  }
+
   return (
     <>
       {isLogged ? (
@@ -98,6 +91,7 @@ function App({ url }) {
           submitSendMessage={submitSendMessage}
           listMessages={listMessages}
           username={username}
+          setIndexChannelActive={setIndexChannelActive}
         />
       ) : (
         <Login setUsername={setUsername} />
