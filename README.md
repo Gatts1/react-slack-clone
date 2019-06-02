@@ -42,3 +42,21 @@ Create a multi channel chat application using the WebSocket server in [codeableo
 - [ ] It must pass with green the Best Practices tests of the Chrome Audits
 - [ ] It must pass with green the SEO tests of the Chrome Audits
 - [ ] The server code should not be modified in any way
+
+
+## Project Execution
+
+To execute the project, do the following:
+```
+npm start
+```
+in another terminal window do:
+```
+cd client/
+npm start
+```
+
+## Project components
+![App window](./documentation/images/components_main.png)
+![left side component](./documentation/images/components_left_side.png)
+![right side component](./documentation/images/components_right_side.png)
