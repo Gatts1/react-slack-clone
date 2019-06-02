@@ -56,7 +56,7 @@ function App({ url }) {
         }
       };
     }
-  }, [ws.current]);
+  });
 
   React.useEffect(() => {
     setListMessages(listChannel[indexChannelActive]["messages"]);
@@ -84,17 +84,10 @@ function App({ url }) {
   }
 
   function receiveNewChannel(channel) {
-    console.log("prueba");
-    console.log(channel);
-    console.log(listChannel.concat(channel));
     setListChannel(listChannel.concat(channel));
-    console.log(listChannel);
   }
 
   function receiveNewMessage(message) {
-    console.log(message);
-    console.log(indexChannelActive);
-    console.log(listChannel);
     if (message["channel"] === listChannel[indexChannelActive]["name"]) {
       setListMessages(listMessages.concat(message["body"]));
       listChannel[indexChannelActive]["messages"].push(message["body"]);
