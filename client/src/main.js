@@ -9,8 +9,10 @@ function Main({
   submitSendMessage,
   listMessages,
   username,
-  setIndexChannelActive
+  setIndexChannelActive,
+  channelName
 }) {
+  console.log(channelName);
   return (
     <>
       <Global
@@ -46,6 +48,7 @@ function Main({
       <RightSide
         submitSendMessage={submitSendMessage}
         listMessages={listMessages}
+        channelName={channelName}
       />
     </>
   );

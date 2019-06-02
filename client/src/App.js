@@ -10,7 +10,7 @@ function App({ url }) {
   const [username, setUsername] = React.useState(null);
 
   const [listChannel, setListChannel] = React.useState([
-    { name: "general", id: Date.now() }
+    { id: Date.now(), name: "general", messages: [] }
   ]);
 
   const [listMessages, setListMessages] = React.useState([]);
@@ -50,14 +50,14 @@ function App({ url }) {
   });
 
   React.useEffect(() => {
-    setListMessages(
-      listMessages.filter(message => message.indexChannel == indexChannelActive)
-    );
-    console.log(listMessages);
+    console.log("23");
+    setListMessages(listChannel[indexChannelActive]["messages"]);
   }, [indexChannelActive]);
 
   function submitSendChannel(channelName) {
-    setListChannel(listChannel.concat({ name: channelName, id: Date.now() }));
+    setListChannel(
+      listChannel.concat({ id: Date.now(), name: channelName, messages: [] })
+    );
     ws.current.send(
       JSON.stringify({
         name: channelName,
@@ -67,15 +67,14 @@ function App({ url }) {
   }
 
   function submitSendMessage(messageContent) {
-    setListMessages(
-      listMessages.concat({
-        id: new Date().toISOString(),
-        author: username,
-        content: messageContent,
-        date: new Date().toISOString(),
-        indexChannel: indexChannelActive
-      })
-    );
+    let newMessage = {
+      id: new Date().toISOString(),
+      author: username,
+      content: messageContent,
+      date: new Date().toISOString()
+    };
+    setListMessages(listMessages.concat(newMessage));
+    listChannel[indexChannelActive]["messages"].push(newMessage);
     ws.current.send(
       JSON.stringify({
         id: new Date().toISOString(),
@@ -89,7 +88,6 @@ function App({ url }) {
   function changeActiveChannel(newId) {
     setIndexChannelActive(newId);
   }
-
   return (
     <>
       {isLogged ? (
@@ -97,10 +95,9 @@ function App({ url }) {
           submitSendChannel={submitSendChannel}
           listChannel={listChannel}
           submitSendMessage={submitSendMessage}
-          listMessages={listMessages.filter(
-            message => message.indexChannel == indexChannelActive
-          )}
+          listMessages={listMessages}
           username={username}
+          channelName={listChannel[indexChannelActive]["name"]}
           setIndexChannelActive={setIndexChannelActive}
         />
       ) : (
