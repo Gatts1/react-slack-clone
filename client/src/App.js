@@ -10,7 +10,7 @@ function App({ url }) {
   const [username, setUsername] = React.useState(null);
 
   const [listChannel, setListChannel] = React.useState([
-    { name: "general", id: Date.now(), messages: [] }
+    { name: "general", id: Date.now() }
   ]);
 
   const [listMessages, setListMessages] = React.useState([]);
@@ -65,10 +65,11 @@ function App({ url }) {
         id: new Date().toISOString(),
         author: username,
         content: messageContent,
-        date: new Date().toISOString()
+        date: new Date().toISOString(),
+        indexChannel: indexChannelActive
       })
     );
-    setListChannel();
+    console.log(listChannel);
     ws.current.send(
       JSON.stringify({
         id: new Date().toISOString(),
@@ -90,7 +91,9 @@ function App({ url }) {
           submitSendChannel={submitSendChannel}
           listChannel={listChannel}
           submitSendMessage={submitSendMessage}
-          listMessages={listMessages}
+          listMessages={listMessages.filter(
+            message => message.indexChannel == indexChannelActive
+          )}
           username={username}
           setIndexChannelActive={setIndexChannelActive}
         />
