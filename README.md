@@ -62,6 +62,10 @@ npm start
 
 ## Project components
 
+Components in `Login`
+
+![Login window](./client/documentation/images/components_login.png)
+
 Components in `App`
 
 ![App window](./client/documentation/images/components_main.png)
