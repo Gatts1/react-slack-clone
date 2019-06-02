@@ -3,7 +3,7 @@ import React from "react";
 import { jsx } from "@emotion/core";
 import ChannelElement from "./channel-element";
 
-function ChannelList({ listChannel }) {
+function ChannelList({ listChannel, setIndexChannelActive }) {
   const channelsData = listChannel;
 
   return (
@@ -15,8 +15,15 @@ function ChannelList({ listChannel }) {
         marginBottom: "10px"
       }}
     >
-      {channelsData.map(channel => {
-        return <ChannelElement key={channel.id} channelName={channel.name} />;
+      {channelsData.map((channel, index) => {
+        return (
+          <ChannelElement
+            key={channel.id}
+            channelName={channel.name}
+            setIndexChannelActive={setIndexChannelActive}
+            dataIndex={index}
+          />
+        );
       })}
     </ul>
   );

@@ -8,7 +8,8 @@ function Main({
   listChannel,
   submitSendMessage,
   listMessages,
-  username
+  username,
+  setIndexChannelActive
 }) {
   return (
     <>
@@ -40,6 +41,7 @@ function Main({
         submitSendChannel={submitSendChannel}
         listChannel={listChannel}
         username={username}
+        setIndexChannelActive={setIndexChannelActive}
       />
       <RightSide
         submitSendMessage={submitSendMessage}

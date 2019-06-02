@@ -79,6 +79,10 @@ function App({ url }) {
     );
   }
 
+  function changeActiveChannel(newId) {
+    setIndexChannelActive(newId);
+  }
+
   return (
     <>
       {isLogged ? (
@@ -88,6 +92,7 @@ function App({ url }) {
           submitSendMessage={submitSendMessage}
           listMessages={listMessages}
           username={username}
+          setIndexChannelActive={setIndexChannelActive}
         />
       ) : (
         <Login setUsername={setUsername} />
