@@ -48,7 +48,9 @@ function Login({ setUsername }) {
             <h1>Sign in to Codeable</h1>
             <p>codeable.slack.com</p>
             <p>Enter your username</p>
+            <label htmlFor="my_user" aria-label="write your user" />
             <input
+            aria-label=""
               id="my_user"
               name="user"
               type="text"
